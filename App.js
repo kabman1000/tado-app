@@ -12,6 +12,45 @@ import MapScreen from './screens/MapScreen';
 import SplashScreen from './screens/SplashScreen';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen'
+import Amplify from '@aws-amplify/core'
+import * as Keychain from 'react-native-keychain'
+import awsconfig from './src/aws-exports'
+
+
+const MEMORY_KEY_PREFIX = '@MyStorage:'
+let dataMemory= {}
+
+class MyStorage {
+  static syncPromise = null
+
+  static setItem(key, value) {
+    Keychain.setGenericPassword(MEMORY_KEY_PREFIX + key, value)
+    dataMemory[key] = value
+    return dataMemory[key]
+  }
+
+  static getItem(key) {
+    return Object.prototype.hasOwnProperty.call(dataMemory, key) ? dataMemory[key] : undefined
+  }
+
+  static removeItem(key) {
+    Keychain.resetGenericPassword()
+    return delete dataMemory[key]
+  }
+
+  static clear() {
+    dataMemory = {}
+    return dataMemory
+  }
+}
+
+Amplify.configure({
+  ...awsconfig,
+  Analytics: {
+    disabled: false
+  },
+  storage: MyStorage
+})
 
 
 export default function App() {

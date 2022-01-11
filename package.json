@@ -10,10 +10,15 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@react-native-community/netinfo": "^7.1.7",
+    "@react-native-picker/picker": "^2.2.1",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@reduxjs/toolkit": "^1.6.2",
     "autoprefixer": "^10.4.0",
+    "aws-amplify": "^4.3.12",
+    "aws-amplify-react-native": "^6.0.2",
     "expo": "~43.0.2",
     "expo-linear-gradient": "~10.0.3",
     "expo-status-bar": "~1.1.0",
