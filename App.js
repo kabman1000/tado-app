@@ -15,8 +15,11 @@ import SignUpScreen from './screens/SignUpScreen'
 import Amplify from '@aws-amplify/core'
 import * as Keychain from 'react-native-keychain'
 import awsconfig from './src/aws-exports'
+import CreateScreen from './screens/CreateScreen';
+import { Authenticator } from 'aws-amplify-react-native';
 
 
+/*
 const MEMORY_KEY_PREFIX = '@MyStorage:'
 let dataMemory= {}
 
@@ -52,17 +55,39 @@ Amplify.configure({
   storage: MyStorage
 })
 
+*/
 
-export default function App() {
+Amplify.configure({
+  ...awsconfig,
+  Analytics: {
+    disabled: true
+  }
+})
+
+
+function App() {
   const Stack = createNativeStackNavigator();
 
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <Authenticator usernameAttributes="email" />
+    </Provider>
+  );
+}
+
+/*
+<NavigationContainer>
         <SafeAreaProvider>
+
           <Stack.Navigator>
-          <Stack.Screen 
+          
+            
+          </Stack.Navigator>
+          
+        </SafeAreaProvider>
+      </NavigationContainer>
+<Stack.Screen 
               name='SplashScreen'
               component={SplashScreen}
               options={{
@@ -97,14 +122,14 @@ export default function App() {
                 headerShown: false,
               }}
             />
-            
-          </Stack.Navigator>
-        {/*<HomeScreen />*/}  
-        </SafeAreaProvider>
-      </NavigationContainer>
-    </Provider>
-  );
-}
+            <Stack.Screen 
+              name='CreateScreen'
+              component={CreateScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+*/
 
 const styles = StyleSheet.create({
   container: {
@@ -114,3 +139,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;

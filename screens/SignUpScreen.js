@@ -16,7 +16,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native'
 
-const SignInScreen = () => {
+
+const SignUpScreen = () => {
 
     const navigation = useNavigation();
 
@@ -182,7 +183,9 @@ const SignInScreen = () => {
                         colors={['#08d4c4', '#01ab9d']}
                         style={styles.signIn}
                     >
-                        <Text style={[styles.textSign, {
+                        <Text 
+                            onPress={() => navigation.navigate("HomeScreen")}
+                            style={[styles.textSign, {
                             color: '#fff'
                         }]}>Sign Up</Text>
                     </LinearGradient>
@@ -193,7 +196,7 @@ const SignInScreen = () => {
                             borderWidth: 1,
                             marginTop: 15
                         }]}
-                        onPress={() => navigation.goBack()}
+                        onPress={() => navigation.navigate("HomeScreen")}
                     >
                         <Text style={[styles.textSign, {
                             color: '#009387'
@@ -205,7 +208,7 @@ const SignInScreen = () => {
     )
 }
 
-export default SignInScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
     container: {

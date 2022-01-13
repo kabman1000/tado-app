@@ -10,6 +10,11 @@
       "StackName": "amplify-tadoapp-dev-14317",
       "StackId": "arn:aws:cloudformation:us-east-2:107299289004:stack/amplify-tadoapp-dev-14317/e03e11e0-727f-11ec-9fdc-06e5faa2db76",
       "AmplifyAppId": "d2jfq27hwej92h"
+    },
+    "categories": {
+      "auth": {
+        "tadoapp9da8bb3f": {}
+      }
     }
   }
 }
